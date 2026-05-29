@@ -3,6 +3,6 @@
     "total_parameters": 42369,
     "file_size_mb": 0.19,
     "peak_vram_mb": 306.14,
-    "generation_time_seconds": 2.43,
-    "tokens_per_second": 205.81
+    "generation_time_seconds": 2.46,
+    "tokens_per_second": 203.02
 }
