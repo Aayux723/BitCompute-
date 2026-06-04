@@ -1,0 +1,8 @@
+{
+    "model_type": "BitNet_1.58b_PyTorch_Simulation",
+    "total_parameters": 42369,
+    "file_size_mb": 0.19,
+    "peak_vram_mb": 18.53,
+    "generation_time_seconds": 9.04,
+    "tokens_per_second": 55.33
+}
