@@ -32,19 +32,19 @@ jobs:
         uses: Jimver/cuda-toolkit@v0.2.14
         id: cuda-toolkit-windows
         with:
-          cuda: '12.4.1'
+          cuda: '12.1.1'
 
       - name: Set up CUDA (Ubuntu)
         if: runner.os == 'Linux'
         uses: Jimver/cuda-toolkit@v0.2.14
         id: cuda-toolkit-ubuntu
         with:
-          cuda: '12.4.1'
+          cuda: '12.1.1'
 
       - name: Install PyTorch with CUDA support
         run: |
           python -m pip install --upgrade pip
-          pip install torch --index-url https://download.pytorch.org/whl/cu124
+          pip install torch --index-url https://download.pytorch.org/whl/cu121
           pip install build wheel setuptools
 
       - name: Build wheel
