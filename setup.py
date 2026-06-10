@@ -122,7 +122,7 @@ if CUDA_INC not in cuda_include_dirs:
     cuda_include_dirs.append(CUDA_INC)
 
 setup(
-    name='BitCore',
+    name='BitCompute',
     version='0.1.0',
     description='1.58-bit LLM Execution Engine and Benchmark Suite',
     author='Aayush Anand',
