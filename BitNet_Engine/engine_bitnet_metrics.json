@@ -1,0 +1,14 @@
+{
+    "model_type": "EngineBitGPT_Custom_CUDA_Ternary",
+    "device": "cuda",
+    "custom_engine_path": "C:\\Users\\Aayush Anand\\Desktop\\Bit-1\\BitNet_Engine\\BitNet_engine.cp313-win_amd64.pyd",
+    "checkpoint": "C:\\Users\\Aayush Anand\\Desktop\\Bit-1\\BitNet_Engine\\tiny_gpt_engine_bitnet.pth",
+    "total_parameters": 42369,
+    "train_seconds": 223.17,
+    "final_train_loss": 2.454,
+    "final_val_loss": 2.4641,
+    "generation_time_seconds": 8.9707,
+    "tokens_per_second": 55.74,
+    "peak_vram_mb": 17.56,
+    "sample_text": "\nBOSE SABCCETUd\nMy ar bthar uwqor, vetrar dthaccate awcce my.\n\nHDEdacom orou daow,s, tof is ccicth! Whedill,,\nWheiree senecin;\nStistt drov theande Wind. Gire yracsesel lind peal.\n-hucr cochiry ptupr aisspllety. BurBake korfdpeangavlesst:\nIll, do coungleo Windo wher piicks to th dourifad, echirecs poocto thoure\nTot ad nderuptef sor; wor therf thin malerocth,\nMad rred dono dor dyou and,,\nSbuis:\nSadsad chis ghest hoic cour ay, tey vry tomchan afd! wyoun pand, armary.\nYor coot bay?m oora and,\nNo-epyo"
+}

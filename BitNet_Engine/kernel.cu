@@ -1,8 +1,7 @@
-#include <ATen/ATen.h>
-#include <ATen/cuda/CUDAContext.h>
-#include <c10/cuda/CUDAException.h>
+// Pure CUDA kernel — NO C++ standard library headers to avoid cudafe++ crash
+// on CUDA 12.8 + MSVC 14.44.
 #include <cuda_runtime.h>
-#include <cstdint>
+#include <stdint.h>   // C header, not <cstdint> — cudafe++ handles this fine
 
 __global__ void ternary_matmul_kernel(
     const float* __restrict__ inputs,
@@ -33,31 +32,21 @@ __global__ void ternary_matmul_kernel(
     }
 }
 
-// Function called by Binding.cpp
-at::Tensor ternary_matmul_cuda_forward(
-    at::Tensor inputs,
-    at::Tensor weights
+// Plain C-linkage launcher — Binding.cpp calls this with raw pointers
+extern "C" void launch_ternary_matmul(
+    const float* inputs,
+    const int8_t* weights,
+    float* output,
+    int M, int K, int N,
+    cudaStream_t stream
 ) {
-    int M = static_cast<int>(inputs.size(0));
-    int K = static_cast<int>(inputs.size(1));
-    int N = static_cast<int>(weights.size(0));
-    auto output = at::zeros({M, N}, inputs.options());
-
     dim3 threads(16, 16);
     dim3 blocks(
         (N + threads.x - 1) / threads.x,
         (M + threads.y - 1) / threads.y
     );
 
-    ternary_matmul_kernel<<<blocks, threads, 0, at::cuda::getCurrentCUDAStream()>>>(
-        inputs.data_ptr<float>(),
-        weights.data_ptr<int8_t>(),
-        output.data_ptr<float>(),
-        M,
-        K,
-        N
+    ternary_matmul_kernel<<<blocks, threads, 0, stream>>>(
+        inputs, weights, output, M, K, N
     );
-    C10_CUDA_KERNEL_LAUNCH_CHECK();
-
-    return output;
 }

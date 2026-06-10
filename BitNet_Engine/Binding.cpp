@@ -1,10 +1,41 @@
 #include <torch/extension.h>
 #include <ATen/Parallel.h>
+#include <c10/cuda/CUDAStream.h>
 #include <cstdint>
 #include <limits>
 #include <vector>
 
-torch::Tensor ternary_matmul_cuda_forward(torch::Tensor inputs, torch::Tensor weights);
+// Plain C launcher defined in kernel.cu — no PyTorch headers needed there
+extern "C" void launch_ternary_matmul(
+    const float* inputs,
+    const int8_t* weights,
+    float* output,
+    int M, int K, int N,
+    cudaStream_t stream
+);
+
+// Thin wrapper: unwraps Tensors → raw pointers, calls the CUDA launcher
+torch::Tensor ternary_matmul_cuda_forward(torch::Tensor inputs, torch::Tensor weights) {
+    int M = static_cast<int>(inputs.size(0));
+    int K = static_cast<int>(inputs.size(1));
+    int N = static_cast<int>(weights.size(0));
+    auto output = torch::zeros({M, N}, inputs.options());
+
+    launch_ternary_matmul(
+        inputs.data_ptr<float>(),
+        weights.data_ptr<int8_t>(),
+        output.data_ptr<float>(),
+        M, K, N,
+        at::cuda::getCurrentCUDAStream()
+    );
+
+    // Check for kernel launch errors
+    auto err = cudaGetLastError();
+    TORCH_CHECK(err == cudaSuccess,
+                "CUDA kernel launch failed: ", cudaGetErrorString(err));
+
+    return output;
+}
 
 // --- THE MULTI-THREADED CPU WORKER LOOP ---
 torch::Tensor ternary_matmul_cpu_forward(torch::Tensor inputs, torch::Tensor weights) {

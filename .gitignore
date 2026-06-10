@@ -1,0 +1,8 @@
+# Do not upload binaries, logs, or model weights!
+*.pyd
+*.log
+*.txt
+*.pth
+build/
+__pycache__/
+.venv/
