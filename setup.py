@@ -116,7 +116,7 @@ class BuildWithCUDA(BuildExtension):
 
 
 # Get all include paths for CUDA from PyTorch's helper
-cuda_include_dirs = include_paths(device_type='cuda')
+cuda_include_dirs = include_paths(cuda=True)
 # Also add our explicit CUDA include dir
 if CUDA_INC not in cuda_include_dirs:
     cuda_include_dirs.append(CUDA_INC)
