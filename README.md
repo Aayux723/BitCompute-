@@ -31,15 +31,14 @@ We trained and benchmarked a small GPT model on a standard consumer GPU across t
 3. **Speed vs. Memory Tradeoff:** Currently, standard FP32 operations are heavily accelerated by NVIDIA Tensor Cores and highly optimized `cuBLAS` libraries (yielding 203 tokens/sec). Because BitCompute is a custom, hand-written C++ kernel, it operates at ~55 tokens/sec. While slightly slower, the staggering 94% memory reduction is what allows these models to run on edge devices (like smartphones and IoT sensors) that physically do not possess enough RAM to boot an FP32 model in the first place.
 
 ---
-
 ## Installation
 
-BitCompute is fully open-source and hosted on the Python Package Index (PyPI). 
-
-**Prerequisites:** BitCompute requires **Python 3.10, 3.11, or 3.12**.
+BitCompute is fully open-source and hosted on the Python Package Index (PyPI). It is supported exclusively on **Python 3.10, 3.11, and 3.12**.
 
 **Install on Windows:** ```bash
 pip install bitcompute
+
+
 ##  Usage
 
 BitCompute exposes a direct function for ternary matrix multiplication that can be dropped into any PyTorch training loop or inference script.
