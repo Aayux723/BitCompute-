@@ -62,7 +62,7 @@ print(output.shape)
 # torch.Size([128, 512])
 ```
 
-## 📈 Future Roadmap
+## Future Roadmap
 1. **Bit-Packing**: Currently, weights are stored in `int8` containers. By utilizing bit-level packing in C++, we can pack four 1.58-bit weights into a single byte, reducing memory usage by an additional 4x.
 2. **Tensor Core Acceleration**: Rewriting the native CUDA kernel using NVIDIA PTX assembly to force the addition/subtraction loops onto the GPU's Tensor Cores to close the speed gap with `cuBLAS`. 
 3. **Automated `nn.Module` Replacement**: Implementing a Python utility to automatically recursively replace standard `nn.Linear` layers in any HuggingFace model with `BitLinear` layers powered by our engine.
