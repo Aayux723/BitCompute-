@@ -41,11 +41,6 @@ BitCompute is fully open-source and hosted on the Python Package Index (PyPI).
 pip install bitcompute
 ```
 
-**Install on Linux / Google Colab:**
-(Pip will automatically download the source distribution and compile the CUDA engine natively)
-```bash
-pip install bitcompute --no-cache-dir
-```
 
 ##  Usage
 
