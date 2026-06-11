@@ -38,7 +38,7 @@ BitCompute is fully open-source and hosted on the Python Package Index (PyPI). I
 ### Install on Windows
 
 ```bash
-pip install bitcompute
+pip install BitCompute
 ```
 
 
