@@ -35,8 +35,11 @@ We trained and benchmarked a small GPT model on a standard consumer GPU across t
 
 BitCompute is fully open-source and hosted on the Python Package Index (PyPI). It is supported exclusively on **Python 3.10, 3.11, and 3.12**.
 
-**Install on Windows:** ```bash
+### Install on Windows
+
+```bash
 pip install bitcompute
+```
 
 
 ##  Usage
