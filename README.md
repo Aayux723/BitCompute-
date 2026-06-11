@@ -32,16 +32,14 @@ We trained and benchmarked a small GPT model on a standard consumer GPU across t
 
 ---
 
-##  Installation
+## Installation
 
 BitCompute is fully open-source and hosted on the Python Package Index (PyPI). 
 
-**Install on Windows:**
-```bash
+**Prerequisites:** BitCompute requires **Python 3.10, 3.11, or 3.12**.
+
+**Install on Windows:** ```bash
 pip install bitcompute
-```
-
-
 ##  Usage
 
 BitCompute exposes a direct function for ternary matrix multiplication that can be dropped into any PyTorch training loop or inference script.
