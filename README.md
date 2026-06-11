@@ -7,7 +7,7 @@ BitCompute is a custom native PyTorch C++ and CUDA extension designed to drastic
 
 By completely bypassing standard 16-bit or 32-bit floating-point (FP32) matrix multiplications, BitCompute achieves staggering memory savings, allowing large models to run on consumer hardware or edge devices.
 
-## 🚀 Features
+##  Features
 * **Custom CUDA Kernel**: A highly optimized C++ engine that skips expensive floating-point multiplications entirely (since multiplying by `-1`, `0`, or `1` is computationally identical to addition/subtraction).
 * **PyTorch Integration**: A seamless PyBind11 wrapper that allows Python developers to swap out standard `nn.Linear` layers without writing any C++ code.
 * **Intelligent Routing**: Automatically detects CPU vs. CUDA tensors and routes operations to the appropriate hardware backend.
@@ -15,7 +15,7 @@ By completely bypassing standard 16-bit or 32-bit floating-point (FP32) matrix m
 
 ---
 
-## 📊 Benchmark Analysis
+##  Benchmark Analysis
 
 We trained and benchmarked a small GPT model on a standard consumer GPU across three different execution strategies to demonstrate the power of 1.58-bit quantization. 
 
@@ -32,7 +32,7 @@ We trained and benchmarked a small GPT model on a standard consumer GPU across t
 
 ---
 
-## 💻 Installation
+##  Installation
 
 BitCompute is fully open-source and hosted on the Python Package Index (PyPI). 
 
@@ -47,7 +47,7 @@ pip install bitcompute
 pip install bitcompute --no-cache-dir
 ```
 
-## 🛠️ Usage
+##  Usage
 
 BitCompute exposes a direct function for ternary matrix multiplication that can be dropped into any PyTorch training loop or inference script.
 
