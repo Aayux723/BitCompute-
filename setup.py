@@ -123,7 +123,7 @@ if CUDA_INC not in cuda_include_dirs:
 
 setup(
     name='bitcompute',
-    version='0.1.0',
+    version='0.1.1',
     description='1.58-bit LLM Execution Engine and Benchmark Suite',
     author='Aayush Anand',
     packages=find_packages(),
